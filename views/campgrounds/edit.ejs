@@ -1,0 +1,52 @@
+<%- layout('layouts/boilerplate') %>
+<link rel="stylesheet" href="../../stylesheets/fromValidation.css">
+
+
+<div class="row">
+    <h1 class="text-center">Edit Campground</h1>
+    <div class="col-6 offset-3 mb-5">
+        <form action="/campgrounds/<%= camp._id %>?_method=PUT" method="post" id="Form" novalidate>
+            <div class="mb-3">
+                <label class="form-label" for="title">Title :</label>
+                <input class="form-control field" type="text" name="campgrounds[title]" id="title" value="<%=camp.title %>" required>
+                <div class="error" id="titleError"></div>
+            </div >
+            <div class="mb-3">
+                <label class="form-label" for="location">Location :</label>
+                <input class="form-control field" type="text" name="campgrounds[location]" id="location" value="<%=camp.location %>" required>
+                <div class="error" id="locationError"></div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="Image">Image :</label>
+                <input class="form-control field" type="text" name="campgrounds[img]" id="Image" value="<%=camp.img %>" required>
+                <div class="error" id="ImageError"></div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="price">Price :</label>
+                <div class="input-group">
+                    <span class="input-group-text">$</span>
+                    <input class="form-control" type="text" name="campgrounds[price]" id="price" placeholder="0.00" value="<%=camp.price %>" required>
+                </div>
+                <div class="error" id="priceError"></div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="description">Description :</label>
+                <textarea class="form-control field" type="text" name="campgrounds[description]" id="description" required><%=camp.description %></textarea>
+                <div class="error" id="descriptionError"></div>
+            </div>
+
+
+            <button class="btn btn-success mt-3">Add Campground</button>
+            <a href="/campgrounds/<%= camp._id %>" class="btn btn-secondary mt-3">Back</a>
+        </form>
+    </div>
+
+
+</div>
+
+
+<script src="../../javascipts/formValidation.js"></script>
+
+
+
+
