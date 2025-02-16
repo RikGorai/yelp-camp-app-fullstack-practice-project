@@ -11,7 +11,7 @@
     50% { transform: translateX(5px);}
     75% { transform: translateX(-5px);}
 }
-input.invalid {
+.invalid {
     border: 1px solid red;
     animation: shake 0.5s ease-in-out;
 }

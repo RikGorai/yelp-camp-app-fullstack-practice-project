@@ -68,7 +68,18 @@ document.getElementById("Form").addEventListener("submit",(e) =>{
 
     if (titleValid && locationValid && imageValid && descriptionValid && priceValid){
         alert("Form data submitted successfully");
-        event.target.submit();
+        e.target.submit();
+    }
+});
+document.getElementById("form2").addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    clearError();
+
+    const bodyValid = validateText("body");
+    if (bodyValid) {
+        alert("Form data submitted successfully");
+        e.target.submit();
     }
 });
 

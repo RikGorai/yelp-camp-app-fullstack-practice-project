@@ -1,7 +1,9 @@
 <%- layout('layouts/boilerplate') %>
+<link rel="stylesheet" href="../../stylesheets/fromValidation.css">
+
 
 <div class="row mb-5">
-    <div class="col-6 offset-3">
+    <div class="col-6 offset-1">
         <div class="card" >
             <img src="<%= camp.img %>" class="card-img-top" alt="...">
             <div class="card-body">
@@ -24,7 +26,40 @@
         </div>
         <a href="/campgrounds" class="btn btn-secondary mt-3">Back</a>
     </div>
+    <div class="col-3 offset-1">
+        <h3>Leave a Review:</h3>
+        <form action="/campgrounds/<%= camp._id %>/review" method="POST" class="mt-4" id="form2" novalidate>
+            <div class="mb-3">
+                <label for="rating" class="form-label">Rating:</label>
+                <input type="range" min="1" max="5" class="form-range field" name="review[rating]" required>
+            </div>
+            <div class="mb-3">
+                <div>
+                    <label for="body" class="form-label">Review:</label>
+                    <textarea name="review[body]" id="body" class="form-control field" cols="10" rows="3" required></textarea>
+                </div>
+                <div class="error" id="bodyError"></div>
+            </div>
+            <button class="btn btn-success">Submit</button>
+        </form>
+        <% for(let review of camp.reviews){ %>
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title mb-2">Rating: <%= review.rating %>
+                    </h5>
+                    <p class="fs-9">Review: <%= review.body %>
+                    </p>
+                    <form action="/campgrounds/<%=camp._id%>/review/<%=review.id%>?_method=DELETE" method="post">
+                        <button class="btn btn-sm btn-danger">DELETE</button>
+                    </form>
+                </div>
+                
+            </div>
+            
+        <% } %>
+    </div>
 </div>
 
+ <script src="../../javascipts/reviewValidation.js"></script>
 
 
